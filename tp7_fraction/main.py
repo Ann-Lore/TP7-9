@@ -12,10 +12,9 @@ class Fraction:
     def __init__(self,num=0, den=1):
         """This builds a fraction based on some numerator and denominator.
 
-        PRE : num est un nombre entier
-              den est un nombre entier non nul
+        PRE : 
         POST : initialise les attributs
-        RAISE : ValueError si den est egal à 0 ou si den ou si num n'est pas un entier
+        RAISE : ValueError si den est egal à 0 ou ValueError si den ou si num n'est pas un entier
         """
         if not isinstance(num,int) or not isinstance(den,int):
             raise TypeError('num et den doit être des entiers')
@@ -80,7 +79,7 @@ class Fraction:
     def __add__(self, other):
         """Overloading of the + operator for fractions
 
-         PRE : other est une fraction à additionner
+         PRE : 
          POST : retourne le resultat de cette somme de fraction
          RAISE : TypeError si other n'est pas une fraction
          """
@@ -93,7 +92,7 @@ class Fraction:
     def __sub__(self, other):
         """Overloading of the - operator for fractions
 
-         PRE : other est une fraction à soustraire
+         PRE : 
          POST : retourne le resultat de cette soustraction de fraction
          RAISE : TypeError si other n'est pas une fraction
          """
@@ -106,7 +105,7 @@ class Fraction:
     def __mul__(self, other):
         """Overloading of the * operator for fractions
 
-         PRE : other est une fraction à multiplier
+         PRE : 
          POST : retourne le resultat de cette multiplication de fraction
          RAISE : TypeError si other n'est pas une fraction
          """
@@ -119,7 +118,7 @@ class Fraction:
     def __truediv__(self, other):
         """Overloading of the / operator for fractions
 
-         PRE : other est une fraction à diviser
+         PRE : 
          POST : retourne le resultat de cette division de fraction
          RAISE : TypeError si other n'est pas une fraction et ValueError si on veut diviser par 0
          """
@@ -134,7 +133,7 @@ class Fraction:
     def __pow__(self, other):
         """Overloading of the ** operator for fractions
 
-         PRE : other est un entier à mettre en puissance
+         PRE : 
          POST : retourne le resultat de cette puissance de fraction
          RAISE : TypeError si other n'est pas une entier
          """
@@ -151,7 +150,7 @@ class Fraction:
     def __eq__(self, other):
         """Overloading of the == operator for fractions
 
-        PRE : other est une fraction
+        PRE : 
         POST : retourne True si c'est égale sinon False
         RAISE : TypeError si other n'est pas une fraction
         """
@@ -209,7 +208,7 @@ class Fraction:
 
         Two fractions are adjacents if the absolute value of the difference them is a unit fraction
 
-        PRE : other est une fraction
+        PRE : 
         POST :return True si c'est la difference des fractions est unitaire, sinon False
         RAISE : TypeError si other n'est pas une fraction
         """
