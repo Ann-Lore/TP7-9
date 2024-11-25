@@ -186,3 +186,36 @@ class TestMain(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             f1.is_adjacent_to("njsn")
+
+
+    def test_plus_petit(self):
+        f1 = Fraction(4, 3)
+        f2 = Fraction(3, 3)
+        f3 = Fraction(-4, 7)
+        self.assertTrue(f3 < f1)
+        self.assertFalse(f1 < f2)
+
+        with self.assertRaises(TypeError):
+            f1 < 1
+
+        with self.assertRaises(TypeError):
+            f1 < 0.5
+
+        with self.assertRaises(TypeError):
+            f1 < "shfj"
+
+    def test_plus_grand(self):
+        f1 = Fraction(4, 3)
+        f2 = Fraction(3, 3)
+        f3 = Fraction(-4, 7)
+        self.assertTrue(f2 > f3)
+        self.assertFalse(f3 > f1)
+
+        with self.assertRaises(TypeError):
+            f1 > 2
+
+        with self.assertRaises(TypeError):
+            f1 > 2.2
+
+        with self.assertRaises(TypeError):
+            f1 > "shfj"
