@@ -6,6 +6,8 @@ class TestMain(unittest.TestCase):
         f2 = Fraction(-8, 6)
         f3 = Fraction(4, -3)
 
+        self.assertEqual(str(f1), "Le resultat est 1/2")
+
         self.assertEqual(f1.numerator, 1)
         self.assertEqual(f1.denominator, 2)
 
@@ -32,22 +34,30 @@ class TestMain(unittest.TestCase):
     def test_as_mixed_number(self):
         f1 = Fraction(4, 3)
         f2 = Fraction(3, 3)
+        f3 = Fraction(-4, 3)
+        f4 = Fraction(-4, 2)
 
-        self.assertEqual(f1.as_mixed_number(), "Le resultat est 1 + 1/3" )
-        self.assertEqual(f2.as_mixed_number(), "Le resultat est 1")
+        self.assertEqual(f1.as_mixed_number(), "1 + 1/3" )
+        self.assertEqual(f2.as_mixed_number(), "1")
+        self.assertEqual(f3.as_mixed_number(), "-1 - 1/3" )
+        self.assertEqual(f4.as_mixed_number(), "-2")
+
 
     def test_addition(self):
         f1 = Fraction(4, 3)
         f2 = Fraction(3, 3)
         f3 = Fraction(-4, 7)
+        f4 = Fraction(-4, 3)
+
         self.assertEqual(str(f1 + f2), "Le resultat est 7/3")
         self.assertEqual(str(f1 + f3), "Le resultat est 16/21")
+        self.assertEqual(str(f1 + f4), "Le resultat est 0/1")
 
         with self.assertRaises(TypeError):
             f1 + 2
 
         with self.assertRaises(TypeError):
-            f1 - 2.5
+            f1 + 2.5
 
         with self.assertRaises(TypeError):
             f1 + "shfj"
@@ -59,6 +69,7 @@ class TestMain(unittest.TestCase):
         f3 = Fraction(-4, 7)
         self.assertEqual(str(f1 - f2), "Le resultat est 1/3")
         self.assertEqual(str(f1 - f3), "Le resultat est 40/21")
+        self.assertEqual(str(f1 - f1), "Le resultat est 0/1")
 
         with self.assertRaises(TypeError):
             f1 - 2
@@ -73,8 +84,12 @@ class TestMain(unittest.TestCase):
         f1 = Fraction(4, 3)
         f2 = Fraction(3, 3)
         f3 = Fraction(-4, 7)
+        f4 = Fraction(0, 3)
+
         self.assertEqual(str(f1 * f2), "Le resultat est 4/3")
         self.assertEqual(str(f1 * f3), "Le resultat est -16/21")
+        self.assertEqual(str(f1 * f4), "Le resultat est 0/1")
+
 
         with self.assertRaises(TypeError):
             f1 * 2
@@ -90,6 +105,7 @@ class TestMain(unittest.TestCase):
         f2 = Fraction(3, 3)
         f3 = Fraction(-4, 7)
         f4 = Fraction(0, 3)
+
         self.assertEqual(str(f1 / f2), "Le resultat est 4/3")
         self.assertEqual(str(f1 / f3), "Le resultat est -7/3")
 
@@ -128,16 +144,19 @@ class TestMain(unittest.TestCase):
         f1 = Fraction(10, 20)
         f2 = Fraction(1, 2)
         f3 = Fraction(21, 47)
+        f4 = Fraction(2, 2)
 
         self.assertTrue(f1 == f2)
         self.assertFalse(f1 == f3)
 
+        with self.assertRaises(TypeError):
+            f4 == 1
 
         with self.assertRaises(TypeError):
-            _ = f1 == 0.5
+            f1 == 0.5
 
         with self.assertRaises(TypeError):
-            _ = f1 == "shfj"
+            f1 == "shfj"
 
     def test_float(self):
         f1 = Fraction(10, 20)
@@ -167,8 +186,16 @@ class TestMain(unittest.TestCase):
 
         self.assertTrue(f1.is_proper())
         self.assertTrue(f3.is_proper())
-
         self.assertFalse(f2.is_proper())
+
+    def test_is_unit(self):
+        f1 = Fraction(1, 4)
+        f2 = Fraction(7, 3)
+        f3 = Fraction(-1, 3)
+
+        self.assertTrue(f1.is_unit())
+        self.assertFalse(f2.is_unit())
+        self.assertFalse(f3.is_unit())
 
     def test_is_adjacent_to(self):
         f1 = Fraction(7, 4)
